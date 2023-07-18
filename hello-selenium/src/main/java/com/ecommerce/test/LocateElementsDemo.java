@@ -46,6 +46,13 @@ public class LocateElementsDemo {
 		WebElement gender = driver.findElement(By.cssSelector("span > span > input[type='radio'][value='1']"));
 		gender.click();
 
+		// Locate image by its tag name
+		WebElement fbLogoImage = driver.findElement(By.tagName("img"));
+		System.out.println("FB Logo src is " + fbLogoImage.getAttribute("src"));
+
+		// Locate a link and click it.
+		WebElement fbAlreadyLink = driver.findElement(By.linkText("Already have an account?"));
+		fbAlreadyLink.click();
 	}
 
 	public static void googleAccCreation(WebDriver driver) throws InterruptedException {
