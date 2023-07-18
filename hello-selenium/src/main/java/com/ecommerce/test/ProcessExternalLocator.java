@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,8 +16,8 @@ public class ProcessExternalLocator {
 		// Basic configuration
 		WebDriver driver = new ChromeDriver();
 
-		demoExternalElements(driver);
-
+//		demoExternalElements(driver);
+		demoExternalElementsNewTab(driver);
 	}
 
 	static void demoExternalElements(WebDriver driver) throws InterruptedException {
@@ -45,4 +46,17 @@ public class ProcessExternalLocator {
 		alert.accept();
 
 	}
+
+	static void demoExternalElementsNewTab(WebDriver driver) throws InterruptedException {
+
+		String baseUrl = "File:///C:\\Users\\rahul\\eclipse-workspace11\\hello-selenium\\src\\main\\resources\\test.html";
+		driver.get(baseUrl);
+
+		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		Thread.sleep(10000);
+
+		driver.switchTo().newWindow(WindowType.TAB);
+		driver.navigate().to("https://www.google.com?q=flowers");
+	}
+
 }
