@@ -16,8 +16,15 @@ public class ProcessExternalLocator {
 		// Basic configuration
 		WebDriver driver = new ChromeDriver();
 
+		//demo Alerts
 //		demoExternalElements(driver);
-		demoExternalElementsNewTab(driver);
+		
+//		demo Tabs
+//		demoExternalElementsNewTab(driver);
+		
+//		demo Iframe
+		demoExternalElementsIFrame(driver);
+		
 	}
 
 	static void demoExternalElements(WebDriver driver) throws InterruptedException {
@@ -58,5 +65,28 @@ public class ProcessExternalLocator {
 		driver.switchTo().newWindow(WindowType.TAB);
 		driver.navigate().to("https://www.google.com?q=flowers");
 	}
+	
+	static void demoExternalElementsIFrame(WebDriver driver) throws InterruptedException {
+
+		String baseUrl = "File:///C:\\Users\\rahul\\eclipse-workspace11\\hello-selenium\\src\\main\\resources\\test.html";
+		driver.get(baseUrl);
+
+		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		Thread.sleep(10000);
+
+		driver.switchTo().frame("myframe");
+
+		driver.findElement(By.cssSelector("#docsearch > button > span.DocSearch-Button-Container > span")).click();
+		driver.findElement(By.cssSelector("#docsearch-input")).sendKeys("hello");
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
