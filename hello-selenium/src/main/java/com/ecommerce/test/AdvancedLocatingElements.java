@@ -1,6 +1,7 @@
 package com.ecommerce.test;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,9 @@ public class AdvancedLocatingElements {
 		// Basic configuration
 		WebDriver driver = new ChromeDriver();
 
-		demoAdvancedXPathCSSSelector(driver);
+		//demoAdvancedXPathCSSSelector(driver);
+		
+		demoTableDetails(driver);
 
 	}
 
@@ -57,5 +60,23 @@ public class AdvancedLocatingElements {
 			System.out.printf("\n option selected = %s", monthOption.getText());
 		}
 	}
-
-}
+	
+		
+	// Locate and Process Table (no of rows, no of columns, particular cell data, etc)
+	static void demoTableDetails(WebDriver driver) {
+		String baseUrl = "https://www.nyse.com/ipo-center/recent-ipo";
+		driver.get(baseUrl);
+		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		String tableXPath = "/html/body/div[1]/div[4]/div[2]/div[3]/div[1]/div[4]/table";
+		String tableXPathRow = "/html/body/div[1]/div[4]/div[2]/div[3]/div[1]/div[4]/table/tbody/tr";
+		
+		List<WebElement> rowList = driver.findElements(By.xpath(tableXPathRow));
+		
+		System.out.printf("\n No of rows in IPO table = %s", rowList.size());		
+		
+	}		
+		
+		
+	}
