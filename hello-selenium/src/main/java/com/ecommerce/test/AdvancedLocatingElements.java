@@ -36,7 +36,11 @@ public class AdvancedLocatingElements {
 		System.out.println("inputAdminElementsUsingCSSSelectors has " + inputAdminElementsUsingCSSSelectors.size());//3
 		
 		List<WebElement> inputAdminElementsUsingCSSSelectors2 = driver.findElements(By.cssSelector("input[id$='xyz']"));
-		System.out.println("input  whose id's end with xyz " + inputAdminElementsUsingCSSSelectors2.size()); //1
+		System.out.println("input  whose id's end with xyz " + inputAdminElementsUsingCSSSelectors2.size()); //2
+		
+
+		WebElement h4SecondChildInsideDiv = driver.findElement(By.cssSelector("div[id='eCommerce'] h4:nth-child(2)"));
+		System.out.println("h4SecondChildInsideDiv text is " + h4SecondChildInsideDiv.getText()); // h4 second
 		
 	}
 
