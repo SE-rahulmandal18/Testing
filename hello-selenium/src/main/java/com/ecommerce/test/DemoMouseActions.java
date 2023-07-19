@@ -1,6 +1,9 @@
 package com.ecommerce.test;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class DemoMouseActions {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		// Basic configuration
 		WebDriver driver = new ChromeDriver();
 
@@ -23,56 +26,42 @@ public class DemoMouseActions {
 		driver.get(baseUrl);
 
 		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		Thread.sleep(10000);
+		Thread.sleep(5000);
 
 		WebElement button = driver.findElement(By.id("dblButton"));
 
 		Actions actions = new Actions(driver);
 		actions.doubleClick(button).perform();
-		
 
-		Thread.sleep(10000);
-//		WebElement helloPara = driver.findElement(By.id("xyz"));
-//		actions.contextClick(helloPara).perform();
-		
+		Thread.sleep(7000);
 
-		//We can execute  many actions together.
+		// We can execute many actions together.
 		Thread.sleep(5000);
 		WebElement helloPara = driver.findElement(By.id("xyz"));
 		Actions multiActions = new Actions(driver);
-		
+
 //		Action action = multiActions
 //		.doubleClick(helloPara)
 //		.contextClick(helloPara)
+//		.pause(5000)
+//		.click(helloPara)
 //		.build();
 //		
 //		action.perform();
+
+		// multi action
+		Actions multiActions2 = new Actions(driver);
+		Action action2 = multiActions2.moveToElement(button).click(button).pause(1000).moveToElement(helloPara)
+				.pause(2000).doubleClick(helloPara).release().build();
+
+		action2.perform();
+
+		// scroll demo
+		Thread.sleep(2000);
+		Actions scrollPageActions = new Actions(driver);
+		scrollPageActions.sendKeys(Keys.PAGE_DOWN).sendKeys(Keys.PAGE_DOWN).pause(5000).sendKeys(Keys.PAGE_UP).build()
+				.perform();
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
