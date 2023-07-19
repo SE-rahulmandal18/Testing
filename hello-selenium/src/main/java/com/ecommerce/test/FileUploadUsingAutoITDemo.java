@@ -18,8 +18,6 @@ public class FileUploadUsingAutoITDemo {
 	}
 	static void demoFileUpload(WebDriver driver) throws InterruptedException, IOException {
 
-		// String baseUrl =
-		// "File:///F:\\Users\\HomeWk\\git\\sl\\PHASE5\\afternoon\\hello-selenium\\src\\main\\resources\\test.html";
 		
 		String baseUrl = "https://demoqa.com/automation-practice-form";
 		driver.get(baseUrl);
