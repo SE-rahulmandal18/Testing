@@ -4,9 +4,7 @@
   <artifactId>TestNG</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
-
-	<dependencies>
-
+  <dependencies>
 		<!--
 		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
@@ -14,6 +12,7 @@
 			<artifactId>selenium-java</artifactId>
 			<version>4.10.0</version>
 		</dependency>
+
 		<!--
 		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
 		<dependency>
@@ -21,17 +20,17 @@
 			<artifactId>selenium-chrome-driver</artifactId>
 			<version>4.10.0</version>
 		</dependency>
-
-
+		
 		<!--
-		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
+		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
 			<version>4.10.0</version>
 		</dependency>
 		
-		<!--TestNG-->
+		
+		<!--Testng-->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -39,8 +38,21 @@
 			<scope>compile</scope>
 		</dependency>
 
-	</dependencies>
-
+		<!-- ReportNG -->
+		<dependency>
+			<groupId>org.uncommons</groupId>
+			<artifactId>reportng</artifactId>
+			<version>1.1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>4.2.2</version>
+		</dependency>
+		
+	</dependencies>	
+	
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -53,15 +65,28 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
+				<artifactId>maven-surefire-plugin</artifactId>	
 				<configuration>
 					<suiteXmlFiles>
 						<suiteXmlFile>testng.xml</suiteXmlFile>
-					</suiteXmlFiles>
-				</configuration>
+					</suiteXmlFiles> 
+					
+					<properties>
+						<property>
+							<name>usedefaultlisteners</name>
+							<value>false</value>
+						</property>
+						<property>
+							<name>listener</name>
+							<value>org.uncommons.reportng.HTMLReporter,
+								org.uncommons.reportng.JUnitXMLReporter
+							</value>
+						</property>
+					</properties>
+					
+				</configuration>			
 			</plugin>
 		</plugins>
 	</build>
 
-  
 </project>
