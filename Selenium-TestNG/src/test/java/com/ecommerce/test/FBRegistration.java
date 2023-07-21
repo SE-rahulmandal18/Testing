@@ -163,7 +163,7 @@ public class FBRegistration {
 	public void beforeSuite() {
 		System.out.printf("Inside %s and thread-id is %s \n", "beforeSuite", Thread.currentThread().getId());
 		
-		//Jenkins Configuration
+		//Jenkins Configuration  -> localhost:1000
 		System.setProperty("webdriver.chrome.driver","C:\\Users\\rahul\\chromedriver_win32\\chromedriver.exe");
 
 		driver = new ChromeDriver();
