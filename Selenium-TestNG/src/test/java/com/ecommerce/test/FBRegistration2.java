@@ -92,10 +92,10 @@ public class FBRegistration2 {
 		
 	}
 
-//	@AfterSuite
-//	public void afterSuite() {
-//		System.out.printf("Inside %s and thread-id is %s \n", "afterSuite", Thread.currentThread().getId());
-//		driver.quit();
-//	}
+	@AfterSuite
+	public void afterSuite() {
+		System.out.printf("Inside %s and thread-id is %s \n", "afterSuite", Thread.currentThread().getId());
+		driver.quit();
+	}
 
 }
