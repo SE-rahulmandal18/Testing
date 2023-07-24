@@ -79,22 +79,23 @@ public class FBRegistration2 {
 	@BeforeSuite
 	public void beforeSuite() {
 
+		//Selenium grid
 		DesiredCapabilities caps = new DesiredCapabilities();
 		caps.setPlatform(Platform.WIN11);
 		caps.setBrowserName("chrome");
 		
 		try {
-			driver = new RemoteWebDriver(new URL("http://192.168.99.1:4444/wd/hub"), caps);
+			driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), caps);
 		} catch (MalformedURLException e) {			
 			e.printStackTrace();
 		}
 		
 	}
 
-	@AfterSuite
-	public void afterSuite() {
-		System.out.printf("Inside %s and thread-id is %s \n", "afterSuite", Thread.currentThread().getId());
-		driver.quit();
-	}
+//	@AfterSuite
+//	public void afterSuite() {
+//		System.out.printf("Inside %s and thread-id is %s \n", "afterSuite", Thread.currentThread().getId());
+//		driver.quit();
+//	}
 
 }
