@@ -1,11 +1,16 @@
 package com.ecommerce.test;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -161,12 +166,25 @@ public class FBRegistration {
 
 	@BeforeSuite
 	public void beforeSuite() {
-		System.out.printf("Inside %s and thread-id is %s \n", "beforeSuite", Thread.currentThread().getId());
+//		System.out.printf("Inside %s and thread-id is %s \n", "beforeSuite", Thread.currentThread().getId());
+//		
+//		//Jenkins Configuration  -> localhost:1000
+//		System.setProperty("webdriver.chrome.driver","C:\\Users\\rahul\\chromedriver_win32\\chromedriver.exe");
+//
+//		driver = new ChromeDriver();
 		
-		//Jenkins Configuration  -> localhost:1000
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\rahul\\chromedriver_win32\\chromedriver.exe");
-
-		driver = new ChromeDriver();
+		//Selenium grid
+		DesiredCapabilities caps = new DesiredCapabilities();
+		caps.setPlatform(Platform.WIN11);
+		caps.setBrowserName("chrome");
+		
+		try {
+			driver = new RemoteWebDriver(new URL("http:localhost:4444/wd/hub"), caps);
+		} catch (MalformedURLException e) {			
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 	@AfterSuite

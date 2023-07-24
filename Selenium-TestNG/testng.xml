@@ -4,7 +4,9 @@
 	<test thread-count="5" name="Test Facebook">
 		<!-- <test thread-count="5" name="Test Facebook" parallel="methods"> -->
 		<classes>
-			<class name="com.ecommerce.test.FBRegistration" />
+			<!-- class name="com.ecommerce.test.FBRegistration"/>  -->
+			
+			<class name="com.ecommerce.test.FBRegistration2" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
