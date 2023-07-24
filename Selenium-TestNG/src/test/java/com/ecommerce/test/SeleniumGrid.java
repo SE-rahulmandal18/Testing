@@ -25,7 +25,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 @Test(groups = "Class1")
-public class FBRegistration2 {
+public class SeleniumGrid {
 	public WebDriver driver;
 
 	String baseUrl = "File:///C:\\Users\\rahul\\eclipse-workspace11\\hello-selenium\\src\\main\\resources\\test.html";
