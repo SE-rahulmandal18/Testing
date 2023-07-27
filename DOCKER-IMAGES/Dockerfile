@@ -10,6 +10,10 @@ COPY script.sh .
 # Make the script executable
 RUN chmod +x script.sh
 
-# Run the script when the container starta
+# Run the script when the container starts
 CMD ["./script.sh"]
+
+ # Command to run the docker image-> docker build -t (image_name->mydockerimage)
+
+
 
