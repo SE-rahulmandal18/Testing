@@ -1,0 +1,82 @@
+clone git repo->cd Docker-> issue command-> docker build -t phpcode .   ->phpcode is the images name
+
+docker images
+
+creating container of the image ->docker run -d --name phpcode1-C -p 80:80 phpcode
+
+docker ps
+
+docker stop container_ID
+
+docker startd container_ID 
+
+
+To push images to docker hub ->
+   docker login -u docker_username
+
+   docker tag phpcode rahulmandal610/phpcode
+   docker push rahulmandal610/phpcode
+
+
+
+=> Create your own Docker image from spring boot starter-project
+ In terminal issue the below command to create JAR file.
+    
+    => mvn clean -Dmaven.test.skip=true package
+
+ Example => C:\Users\rahul\eclipse-workspace\spring-boot-docker-hub-deployement>mvn clean -Dmaven.test.skip=true package
+
+ java -jar target\com.simpli-0.0.1-SNAPSHOT.jar -> This will start spring boot project -> localhost:8080
+
+docker build -t my-first-spring-boot-dockerimage --output type=docker .  => this will build the docker image
+
+
+
+
+Docker Swarm->
+  docker swarm init - will node as manager
+
+docker service create -p 8080:8082 --name my-spring-webapp my-first-spring-boot-dockerimage
+ 
+
+ docker service ls
+
+docker service scale my-spring-webapp=2 ->scale up
+docker service scale my-spring-webapp=1 ->scale down
+
+
+INSTALLTION ON LINUX CLOUD ->
+
+#JDK INSTALLATION
+
+sudo yum update
+
+yum install java-17-amazon-corretto-devel
+
+ 
+
+#GIT INSTALLATION
+
+sudo yum update
+
+sudo yum install git
+
+ 
+
+#MAVEN INSTALLATION
+
+sudo wget https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
+
+sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
+
+sudo yum install -y apache-maven
+
+ 
+
+#DOCKER INSTALLATION
+
+sudo yum update
+
+sudo yum install docker
+
+sudo systemctl start docker
