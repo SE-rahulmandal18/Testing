@@ -1,52 +1,53 @@
 pipeline{
-    
+
      agent any 
-     
-     tools{
-        maven "Maven 3.0"
-     }
+
+        tools{
+
+        maven "maven1"
+        }
      
       stages {
-          
+
         stage('Checkout from GitHub') {
             steps {
-                git branch: 'main', url: "https://github.com/SE-rahulmandal18/Testing.git"
+                 git branch: 'main', url: "https://github.com/SE-rahulmandal18/Testing.git"
+          }
+         }
+            
+            stage('Maven Build') {
+             	
+                steps {
+
+                    dir('spring-boot-docker-hub-deployement') {
+                    bat "mvn -Dmaven.test.skip=true clean package"
+                    }
+                }    
             }
-        }
-        
-        
-         stage('Maven Build') {
-             				
-            steps {
-                dir('spring-boot-docker-hub-deployement') {
-				bat "mvn -Dmaven.test.skip=true clean package"
+            
+            
+            stage('Build Docker Image') {
+                   
+                   steps {
+                        dir('spring-boot-docker-hub-deployement') {
+                  	    bat "docker build -t my-morning-spring-app-1 --output type=docker ."
+
 				}
+
             }
+
         }
-        
-        stage('Build Docker Image') {
-             				
-            steps {
-                dir('spring-boot-docker-hub-deployement') {
-				bat "docker build -t my-morning-spring-app-1 --output type=docker ."
-				}
-            }
-        }
-        
-      stage('Push Docker Image') {
-             				
-            steps {
+            
+            stage('Push Docker Image') {
+
+             	steps {
 			bat "docker tag my-morning-spring-app-1 rahulmandal610/my-morning-spring-app-1"
 			bat "docker push rahulmandal610/my-morning-spring-app-1"
-            }
-        }  
-        
-        
-        
-      }
-    
-}
 
- 
- 
-      
+            }
+
+        }
+                 
+         
+      }
+}
