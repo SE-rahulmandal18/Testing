@@ -50,33 +50,23 @@ INSTALLTION ON LINUX CLOUD ->
 #JDK INSTALLATION
 
 sudo yum update
-
-yum install java-17-amazon-corretto-devel
-
- 
+yum install java-17-amazon-corretto-devel -y
 
 #GIT INSTALLATION
 
 sudo yum update
-
-sudo yum install git
-
- 
+sudo yum install git -y
 
 #MAVEN INSTALLATION
 
 sudo wget https://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
-
 sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
-
 sudo yum install -y apache-maven
-
- 
 
 #DOCKER INSTALLATION
 
 sudo yum update
-
-sudo yum install docker
-
+sudo yum install docker -y 
+sudo usermod -a -G docker ec2-user
+newgrp docker
 sudo systemctl start docker
