@@ -45,7 +45,7 @@ docker service scale my-spring-webapp=2 ->scale up
 docker service scale my-spring-webapp=1 ->scale down
 
 
-INSTALLTION ON LINUX CLOUD ->
+INSTALLTION ON AMAZON LINUX CLOUD ->
 
 #JDK INSTALLATION
 
