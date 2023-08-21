@@ -25,8 +25,8 @@ public class FBRegistration {
 
 	String baseUrl = "File:///C:\\Users\\rahul\\eclipse-workspace11\\hello-selenium\\src\\main\\resources\\test.html";
 
-	SoftAssert softAssert =  new SoftAssert();
-	
+	SoftAssert softAssert = new SoftAssert();
+
 	@Test(groups = { "Google" })
 	public void searchGoogleAndTestTitleText() {
 		System.out.printf("Inside %s and thread-id is %s \n", "searchGoogle", Thread.currentThread().getId());
@@ -34,11 +34,10 @@ public class FBRegistration {
 		driver.get("http://www.google.com");
 
 		System.out.println("Title of google page is " + driver.getTitle());
-		
-		softAssert.assertEquals(driver.getTitle(), "Google");
-		
 
-		softAssert.assertAll("Google title did not match");		
+		softAssert.assertEquals(driver.getTitle(), "Google");
+
+		softAssert.assertAll("Google title did not match");
 	}
 
 	@Test(groups = { "Account Creation" })
@@ -51,22 +50,22 @@ public class FBRegistration {
 
 		String cssDay = "#day";
 		WebElement cssDaySelect = driver.findElement(By.cssSelector(cssDay));
-		
+
 		softAssert.assertNotNull(cssDaySelect);
 
 		Select daySelect = new Select(cssDaySelect);
 		daySelect.selectByVisibleText("11");
 
 		WebElement cssGenderRadio = driver.findElement(By.cssSelector("span > span > input[type='radio'][value='2']"));
-		
+
 		softAssert.assertNotNull(cssGenderRadio);
-		
+
 		cssGenderRadio.click();
 
 		System.out.println("Gender is enabled = " + cssGenderRadio.isSelected());
-		
+
 		softAssert.assertTrue(cssGenderRadio.isSelected());
-		
+
 		softAssert.assertAll("Either Day or Gender element was not located OR gender selection failed");
 	}
 
@@ -79,11 +78,11 @@ public class FBRegistration {
 
 		// Let's locate the first name text field by its id.
 		WebElement firstNameTF = driver.findElement(By.id("firstName"));
-		firstNameTF.sendKeys(fName) ;//("Myname");
+		firstNameTF.sendKeys(fName);// ("Myname");
 
 		// Let's locate the surname name text field by its name.
 		WebElement surNameTF = driver.findElement(By.name("lastName"));
-		surNameTF.sendKeys(lName);//("latName");
+		surNameTF.sendKeys(lName);// ("latName");
 
 		// The Next button using its class
 		WebElement nextButton = driver.findElement(By.className("VfPpkd-vQzf8d"));
@@ -95,7 +94,7 @@ public class FBRegistration {
 		System.out.printf("Inside %s and thread-id is %s \n", "f1", Thread.currentThread().getId());
 	}
 
-	@Test(enabled = false, dependsOnMethods = {"testLocalPage"})
+	@Test(enabled = false, dependsOnMethods = { "testLocalPage" })
 	public void f2() {
 		System.out.printf("Inside %s and thread-id is %s \n", "f2", Thread.currentThread().getId());
 	}
@@ -134,9 +133,7 @@ public class FBRegistration {
 	public Object[][] googleNewUserData() {
 		return new Object[][] {
 
-				{ "fname1", "lname1" },
-				{ "fname2__2", "lname2__2" }
-			};
+				{ "fname1", "lname1" }, { "fname2__2", "lname2__2" } };
 	}
 
 	@BeforeClass
@@ -162,9 +159,9 @@ public class FBRegistration {
 	@BeforeSuite
 	public void beforeSuite() {
 		System.out.printf("Inside %s and thread-id is %s \n", "beforeSuite", Thread.currentThread().getId());
-		
-		//Jenkins Configuration  -> localhost:1000
-		System.setProperty("webdriver.chrome.driver","C:\\Users\\rahul\\chromedriver_win32\\chromedriver.exe");
+
+		// Jenkins Configuration -> localhost:1000
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\rahul\\chromedriver_win32\\chromedriver.exe");
 
 		driver = new ChromeDriver();
 	}
