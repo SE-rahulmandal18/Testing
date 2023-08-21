@@ -63,8 +63,7 @@ public class AdvancedLocatingElements {
 
 	}
 
-	// Locate and Process Table (no of rows, no of columns, particular cell data,
-	// etc)
+	// Locate and Process Table (no of rows, no of columns, particular cell data, etc)
 	static void demoTableDetails(WebDriver driver) {
 		String baseUrl = "https://www.nyse.com/ipo-center/recent-ipo";
 		driver.get(baseUrl);
