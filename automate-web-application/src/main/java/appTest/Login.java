@@ -22,6 +22,7 @@ public class Login {
 		
 		//Click button to login
 		WebElement LoginBtn = driver.findElement(By.xpath("//button[@name='login']"));
+		
 		LoginBtn.click();
 	}
 }
