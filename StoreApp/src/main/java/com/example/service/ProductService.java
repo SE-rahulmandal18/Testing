@@ -20,49 +20,49 @@ public class ProductService implements IProductService{
 
 	@Override
 	public Product addProduct(Product product) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return productRepository.save(product);
 	}
 
 	@Override
 	public Product updateProduct(Product product) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return productRepository.save(product);
 	}
 
 	@Override
 	public List<Product> getAllProduct() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return productRepository.findAll();
 	}
 
 	@Override
 	public Product getProductById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return productRepository.findById(id).get();
 	}
 
 	@Override
 	public void deleteProductById(Integer id) {
-		// TODO Auto-generated method stub
+		productRepository.deleteById(id);
 		
 	}
 
 	@Override
 	public List<Product> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return productRepository.findByName(name);
 	}
 
 	@Override
 	public List<Product> findByBrand(String brand) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return productRepository.findByBrand(brand);
 	}
 
 	@Override
 	public List<Product> findByPrice(double price) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return productRepository.findByPrice(price);
 	}
 }
