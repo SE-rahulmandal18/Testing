@@ -28,7 +28,7 @@ public class ProductController {
 	private IProductService productService;
 	
 	// add product
-	@PostMapping(value="/products", produces = {MediaType.APPLICATION_JSON_VALUE},
+	@PostMapping(value = "/products", produces = {MediaType.APPLICATION_JSON_VALUE},
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
 	
 	@ResponseStatus(code = HttpStatus.CREATED)
@@ -39,7 +39,7 @@ public class ProductController {
 	
 	
     // update product
-	@PutMapping(value="/products", produces = {MediaType.APPLICATION_JSON_VALUE},
+	@PutMapping(value = "/products", produces = {MediaType.APPLICATION_JSON_VALUE},
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
 	
 	@ResponseStatus(code = HttpStatus.OK)
@@ -50,8 +50,8 @@ public class ProductController {
 	
 	
 	// delete product
-	@DeleteMapping(value="/products{id}")
-	@ResponseStatus(code =HttpStatus.NO_CONTENT)
+	@DeleteMapping(value = "/products/{id}")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteProductById(@PathVariable("id") Integer id) {
 		productService.deleteProductById(id);
 	}
@@ -59,7 +59,7 @@ public class ProductController {
 	
 
 	// get product by id
-	@GetMapping(value="/products{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value = "/products/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Product getProductById(@PathVariable("id") Integer id) {
 		
 		return productService.getProductById(id);
@@ -67,7 +67,7 @@ public class ProductController {
 	
 
 	//get all product
-	@GetMapping(value="/products", produces = {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value = "/products", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<Product> getAllProducts(@PathVariable("id") Integer id) {
 		
 		return productService.getAllProducts();
@@ -75,7 +75,7 @@ public class ProductController {
 	
 
 	//get product by name
-	@GetMapping(value="/products/name{name}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value = "/products/name/{name}", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<Product> getAllProductsByName(@PathVariable("name") String name) {
 		
 		return productService.findByName(name);
@@ -83,7 +83,7 @@ public class ProductController {
 	
 
 	//get product by brand
-	@GetMapping(value="/products/brand{brand}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value = "/products/brand/{brand}", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<Product> getAllProductsByBrand(@PathVariable("brand") String brand) {
 		
 		return productService.findByBrand(brand);
@@ -91,7 +91,7 @@ public class ProductController {
 	
 
 	//get product by price
-	@GetMapping(value="/products/price{price}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value = "/products/price/{price}", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<Product> getAllProductsByPrice(@PathVariable("price") double price) {
 		
 		return productService.findByPrice(price);
