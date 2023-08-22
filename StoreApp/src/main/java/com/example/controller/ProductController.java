@@ -82,7 +82,7 @@ public class ProductController {
 	
 
 	//get product by brand
-	@GetMapping(value="/products/name{brand}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value="/products/brand{brand}", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<Product> getAllProductsByBrand(@PathVariable("brand") String brand) {
 		
 		return productService.findByBrand(brand);
@@ -90,7 +90,7 @@ public class ProductController {
 	
 
 	//get product by price
-	@GetMapping(value="/products/name{price}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value="/products/price{price}", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<Product> getAllProductsByPrice(@PathVariable("price") double price) {
 		
 		return productService.findByPrice(price);
