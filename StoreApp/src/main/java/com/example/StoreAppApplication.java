@@ -5,10 +5,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.example.entity.Product;
 import com.example.repository.ProductRepository;
 
+@ComponentScan({"com.example.controller","com.example.entity", "com.example.repository","com.example.service"})
+@EnableJpaRepositories
 @SpringBootApplication
 public class StoreAppApplication implements CommandLineRunner{
 

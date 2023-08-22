@@ -26,7 +26,7 @@ public class ProductController {
 	@Autowired
 	@Qualifier("productService")
 	private IProductService productService;
-	
+	/*
 	// add product
 	@PostMapping(value = "/products", produces = {MediaType.APPLICATION_JSON_VALUE},
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
@@ -53,6 +53,7 @@ public class ProductController {
 	@DeleteMapping(value = "/products/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteProductById(@PathVariable("id") Integer id) {
+		
 		productService.deleteProductById(id);
 	}
 	
@@ -73,7 +74,7 @@ public class ProductController {
 		return productService.getAllProducts();
 	}
 	
-
+*/
 	//get product by name
 	@GetMapping(value = "/products/name/{name}", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<Product> getAllProductsByName(@PathVariable("name") String name) {

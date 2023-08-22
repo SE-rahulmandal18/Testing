@@ -44,6 +44,7 @@ public class ProductService implements IProductService{
 
 	@Override
 	public void deleteProductById(Integer id) {
+		
 		productRepository.deleteById(id);
 		
 	}
