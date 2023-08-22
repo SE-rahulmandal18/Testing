@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +32,7 @@ public class ProductController {
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
 	
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Product addProduct(Product product) {
+	public Product addProduct(@RequestBody Product product) {
 		
 		return productService.addProduct(product);
 	}
@@ -42,7 +43,7 @@ public class ProductController {
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
 	
 	@ResponseStatus(code = HttpStatus.OK)
-	public Product updateProduct(Product product) {
+	public Product updateProduct(@RequestBody Product product) {
 		
 		return productService.updateProduct(product);
 	}
