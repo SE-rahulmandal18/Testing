@@ -31,7 +31,7 @@ public class ProductService implements IProductService{
 	}
 
 	@Override
-	public List<Product> getAllProduct() {
+	public List<Product> getAllProducts() {
 		
 		return productRepository.findAll();
 	}
