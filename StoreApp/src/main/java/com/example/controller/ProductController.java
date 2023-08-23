@@ -1,5 +1,6 @@
 package com.example.controller;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,82 +20,57 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.entity.Product;
 import com.example.service.IProductService;
 
+// Product Restful WebServices
+
 @RestController
-@Scope(value = "request")
+@Scope("request")
 public class ProductController {
 
 	@Autowired
 	@Qualifier("productService")
 	private IProductService productService;
-	/*
-	// add product
+	
+	@GetMapping(value = "/products", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public List<Product> getAllProducts() {
+		
+		return productService.getAllProducts();
+	}
+	
+	@GetMapping(value = "/products/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public Product getProductById(@PathVariable("id")Integer id) {
+		
+		return productService.getProductById(id);
+	}
+	
 	@PostMapping(value = "/products", produces = {MediaType.APPLICATION_JSON_VALUE},
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
-	
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Product addProduct(@RequestBody Product product) {
 		
 		return productService.addProduct(product);
 	}
-	
-	
-    // update product
+
 	@PutMapping(value = "/products", produces = {MediaType.APPLICATION_JSON_VALUE},
 			consumes = {MediaType.APPLICATION_JSON_VALUE})
-	
 	@ResponseStatus(code = HttpStatus.OK)
 	public Product updateProduct(@RequestBody Product product) {
 		
 		return productService.updateProduct(product);
 	}
-	
-	
-	// delete product
+
 	@DeleteMapping(value = "/products/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteProductById(@PathVariable("id") Integer id) {
+	public void deleteProductById(@PathVariable("id")Integer id) {
 		
 		productService.deleteProductById(id);
 	}
-	
-	
-
-	// get product by id
-	@GetMapping(value = "/products/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Product getProductById(@PathVariable("id") Integer id) {
-		
-		return productService.getProductById(id);
-	}
-	
-
-	//get all product
-	@GetMapping(value = "/products", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Product> getAllProducts(@PathVariable("id") Integer id) {
-		
-		return productService.getAllProducts();
-	}
-	
-*/
-	//get product by name
-	@GetMapping(value = "/products/name/{name}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Product> getAllProductsByName(@PathVariable("name") String name) {
-		
-		return productService.findByName(name);
-	}
-	
-
-	//get product by brand
-	@GetMapping(value = "/products/brand/{brand}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Product> getAllProductsByBrand(@PathVariable("brand") String brand) {
-		
-		return productService.findByBrand(brand);
-	}
-	
-
-	//get product by price
-	@GetMapping(value = "/products/price/{price}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Product> getAllProductsByPrice(@PathVariable("price") double price) {
-		
-		return productService.findByPrice(price);
-	}
 }
+
+
+
+
+
+
+
+
+

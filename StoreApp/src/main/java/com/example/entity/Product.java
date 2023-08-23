@@ -1,5 +1,8 @@
 package com.example.entity;
 
+
+import org.antlr.v4.runtime.misc.NotNull;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,34 +10,58 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "product_details")
+@Table(name = "Product_Details")
 public class Product {
-	
-	public Product(Object object, String string, String string2, double d) {
-	
-	}
 
 	@Id
-	@Column(name = "product_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "product_id")
 	private Integer id;
-	
+
+	@NotNull
 	@Column(name = "product_name")
 	private String name;
-	
-	@Column(name = "product_brand")
-	private String brand;
-	
-	@Column(name = "produtc_price")
-	private double price;
-	
+
+	@Column(name = "product_price")
+	private Double price;
+
+	public Product() {
+	}
+
+	public Product(@NotNull String name, Double price) {
+		super();
+		this.name = name;
+		this.price = price;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Price [id=" + id + ", name=" + name + ", price=" + price + "]";
+	}
 
 }

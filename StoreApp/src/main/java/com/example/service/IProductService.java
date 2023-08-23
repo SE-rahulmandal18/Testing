@@ -6,13 +6,13 @@ import com.example.entity.Product;
 
 public interface IProductService {
 
-	public Product addProduct(Product product);
-	public Product updateProduct(Product product);
-	public List<Product> getAllProducts();
-	public Product getProductById(Integer id);
-	public void  deleteProductById(Integer id);
+	Product addProduct(Product product);
 	
-	public List<Product> findByName(String name);
-	public List<Product> findByBrand(String brand);
-	public List<Product> findByPrice(double price);
+	Product updateProduct(Product product);
+	
+	void deleteProductById(Integer id);
+	
+	Product getProductById(Integer id);
+	
+	List<Product> getAllProducts();
 }
