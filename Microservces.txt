@@ -12,3 +12,7 @@ http://locahost:8080/actuator/env
 Solution:
 1)Restart your application (storeapp)
 -spring.application.name=prodcut-service
+
+
+Spring Cloud Bus
+-http://locahost:8888/actuator/busrefresh
