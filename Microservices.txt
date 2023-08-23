@@ -5,7 +5,7 @@ Day 3
     - application.properties file is stored in Enviroment obj
 
 
--Immutable
+Immutable - Spring env 
 
 http://locahost:8080/actuator/env
 
