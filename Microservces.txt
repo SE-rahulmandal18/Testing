@@ -127,7 +127,11 @@ management.endpoint.env.show-values=ALWAYS
 		
 
 
-
+git commands
+ 1)Delete a folder from github 
+        git rm -r foldername
+        git commit -m "done"
+        git push origin
 
 
 
