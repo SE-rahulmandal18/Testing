@@ -68,7 +68,62 @@ eureka.instance.prefer-ip-address=true
 4) Ensure the RabbitMQ docker container(docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.12-management), 
    Config Server, Eureka sever and storeapp microservices is running
 
+-----------------------------------------------------------------------------------------
 
+spring.datasource.url=jdbc:h2:mem:mphasisdb
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+#Accessing the H2 Console
+spring.h2.console.enabled=true
+
+spring.h2.console.path=/h2-console
+spring.h2.console.settings.trace=false
+spring.h2.console.settings.web-allow-others=false
+
+spring.jpa.properties.hibernate.show_sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+ Don't forget this property - ******
+ spring.jpa.hibernate.ddl-auto=create-drop
+
+ management.endpoints.web.exposure.include=*
+
+ 
+
+# working with schema.sql & data.sql 
+#spring.jpa.hibernate.ddl-auto=none
+
+spring.sql.init.platform=h2
+spring.sql.init.schema=classpath:db/schema-h2.sql
+spring.sql.init.data=classpath:db/data-h2.sql
+
+
+
+management.endpoint.env.show-values=ALWAYS
+
+
+
+
+
+		bookRepository.save(new Book(null '.NET IL Assembler', 'PublisherE', '978-1-4302-6761-4', 492, 2014),
+		bookRepository.save(new Book(null, '.NET Standard 2.0 Cookbook', 'PublisherF', '978-1-78883-466-7', 394, 2018),
+	    bookRepository.save(new Book(null, '.NET Test Automation Recipes', 'PublisherG', '978-1-59059-663-0', 408, 2006),
+	    bookRepository.save(new Book(null, '10 LED Projects for Geeks', 'PublisherH', '978-1-59327-825-0', 240, 2018),
+	    bookRepository.save(new Book(null, '101 Design Ingredients to Solve Big Tech Problems', 'PublisherI', '978-1-93778-532-1', 298, 2013),
+	    bookRepository.save(new Book(null, '101 Excel 2013 Tips, Tricks and Timesavers', 'PublisherJ', '978-1-118-64218-4', 312, 2013),
+		bookRepository.save(new Book(null, '101 UX Principles', 'PublisherK', '978-1-78883-736-1', 414, 2018),
+	    bookRepository.save(new Book(null, '101 Windows Phone 7 Apps', 'PublisherL', '978-0-672-33552-5', 1152, 2011),
+	    bookRepository.save(new Book(null, '20 Easy Raspberry Pi Projects', 'PublisherM', '978-1-59327-843-4', 288, 2018),
+	    bookRepository.save(new Book(null, '20 Recipes for Programming MVC3', 'PublisherN', '978-1-4493-0986-2', 122, 2011),
+				(15, '20 Recipes for Programming PhoneGap', 'PublisherO', '978-1-4493-1954-0', 78, 2012),
+				(16, '21 Recipes for Mining Twitter', 'PublisherP', '978-1-4493-0316-7', 72, 2011),
+				(17, '21st Century C', 'PublisherQ', '978-1-4493-2714-9', 296, 2012),
+				(18, '21st Century C, 2nd Edition', 'PublisherR', '978-1-49190-389-6', 408, 2014),
+				(19, '21st Century Robot', 'PublisherS', '978-1-44933-821-3', 278, 2014),
+				(20, '25 Recipes for Getting Started with R', 'PublisherT', '978-1-4493-0323-5', 50, 2011);
 		
 
 
