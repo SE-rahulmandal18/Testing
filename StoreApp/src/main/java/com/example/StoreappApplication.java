@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 import com.example.entity.Product;
 import com.example.repository.ProductRepository;
 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class StoreappApplication implements CommandLineRunner{
 
