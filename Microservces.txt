@@ -16,3 +16,23 @@ Solution:
 
 Spring Cloud Bus
 -http://locahost:8888/actuator/busrefresh
+
+----------------------------------------------------------------------------------------
+Day 4:
+
+Setting up the Eureka Server:
+
+1) Create a spring Boot Project(spring starter) : (storeApp-Eureka-Server)
+add starter - Spring Cloud Eureka Server
+
+2)In application.properties
+    -server.port=8761
+    -eureka.client.register-with-eureka=false
+    -eureka.client.fetch-registry=false
+
+3) Add @EnableEukrekaServer on the application class
+
+4)Start the application
+http://localhost:8761
+
+
