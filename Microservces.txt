@@ -5,7 +5,7 @@ Day 3
     - application.properties file is stored in Enviroment obj
 
 
--Immutable
+-Immutable - env obj
 
 http://locahost:8080/actuator/env
 
@@ -30,9 +30,48 @@ add starter - Spring Cloud Eureka Server
     -eureka.client.register-with-eureka=false
     -eureka.client.fetch-registry=false
 
-3) Add @EnableEukrekaServer on the application class
+3) Add @EnableEurekaServer on the application class
 
 4)Start the application
 http://localhost:8761
+
+-----------------------------------------------------------------------------------------------
+Two reponsibilities:
+  -spring.applicaion.name=product-service
+
+1)Spring cloud config/spring cloud bus
+  - Property file name
+
+2)Spring Cloud Eureka
+  -Instacne (Service Provider) is registered with the name.(erviceId)
+
+
+Dynamic Registration:
+
+Service Provider:  (Service Instnce/Eureka client)
+
+1)In pom.xml = storeapp
+-Add Satrter - Eureka Discovery Client
+       <dependency>
+              <groupId>org.springframework.cloud</groupId>
+	       <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+	</dependency>
+
+
+2) In application.properties ,add
+ 
+eureka.client.serviceUrl.defalutZone=http://locahst:8761/eureka
+eureka.instance.prefer-ip-address=true
+
+3)Add @@EnableDiscoveryClient on the application class
+
+4) Ensure the RabbitMQ docker container(docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.12-management), 
+   Config Server, Eureka sever and storeapp microservices is running
+
+
+		
+
+
+
 
 
