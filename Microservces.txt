@@ -70,6 +70,53 @@ eureka.instance.prefer-ip-address=true
 
 -----------------------------------------------------------------------------------------
 
+Service Consumer:
+
+http://product-service/products
+http://product-service/products/1
+
+-------------------------------------------------------------------------------------------
+
+Spring MVC/Rest:
+service to service call:
+-RestTemplate (HTTP Client)
+       -IP + Port
+
+-----------------------------------------------------------------------------------------------
+Rest temp wants 1 IP address but we getting 3
+ -To rsolve the problem we hv pattern ->application infrastructure -client side discovery(pattern)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 spring.datasource.url=jdbc:h2:mem:mphasisdb
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
