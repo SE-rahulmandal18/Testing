@@ -12,18 +12,16 @@ import com.example.entity.Product;
 @RestController
 @Scope("request")
 public class ProductClientController {
-	
+
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	@GetMapping("/get-products/{id}")
 	public Product getProductById(@PathVariable("id") int id) {
-		
-		Product product = restTemplate.getForObject(
-				"htttp://product-service/products/" +id, 
-				 Product.class);
-		
+
+		Product product = restTemplate.getForObject("htttp://product-service/products/" + id, Product.class);
+
 		return product;
 	}
- 
+
 }
