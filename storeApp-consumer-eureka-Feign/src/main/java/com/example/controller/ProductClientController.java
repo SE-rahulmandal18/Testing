@@ -9,15 +9,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.entity.Product;
+import com.example.proxy.ProductServiceProxy;
 
 @RestController
 @Scope("request")
 public class ProductClientController {
 
 	@Autowired
-	private ProductClientController productServiceProxy;
+	private ProductServiceProxy productServiceProxy;
    
-	@GetMapping("get-products/{id}")
+	@GetMapping("/get-products/{id}")
 	public Product getProductById(@PathVariable("id") int id) {
 		
 		Product product =  productServiceProxy.getProductById(id);
@@ -25,7 +26,7 @@ public class ProductClientController {
 	}
 	
 
-	@GetMapping("get-products")
+	@GetMapping("/get-products")
 	public List<Product> getAllProducts() {
 		
 		List<Product> products =  productServiceProxy.getAllProducts();
