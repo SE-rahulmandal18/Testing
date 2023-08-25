@@ -16,11 +16,11 @@ public class ProductClientController {
 	@Autowired
 	private RestTemplate restTemplate;
 	
-	@GetMapping("/get-product/{id}")
+	@GetMapping("/get-products/{id}")
 	public Product getProductById(@PathVariable("id") int id) {
 		
 		Product product = restTemplate.getForObject(
-				"htttp://product-service/produccts" +id, 
+				"htttp://product-service/products/" +id, 
 				 Product.class);
 		
 		return product;
