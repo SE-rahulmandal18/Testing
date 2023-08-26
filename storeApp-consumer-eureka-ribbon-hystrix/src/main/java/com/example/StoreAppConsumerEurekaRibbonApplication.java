@@ -9,6 +9,7 @@ import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 public class StoreAppConsumerEurekaRibbonApplication {
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(StoreAppConsumerEurekaRibbonApplication.class, args);
 	}
 
