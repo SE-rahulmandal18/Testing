@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.example.entity.Product;
 
-@FeignClient("product-service")
+@FeignClient(name= "product-service", fallback = ProductServiceProxy.class)
 public interface ProductServiceProxy {
 
 
