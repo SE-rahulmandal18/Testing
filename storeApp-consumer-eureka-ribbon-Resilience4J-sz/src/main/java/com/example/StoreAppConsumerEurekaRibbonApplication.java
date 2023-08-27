@@ -20,5 +20,4 @@ public class StoreAppConsumerEurekaRibbonApplication {
 		//return Sampler.create(0.5f);
 		return Sampler.ALWAYS_SAMPLE; 
 	}
-
 }
