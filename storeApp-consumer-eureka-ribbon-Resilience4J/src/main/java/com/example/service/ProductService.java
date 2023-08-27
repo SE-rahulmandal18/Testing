@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 import com.example.entity.Product;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
 
 @Service
 public class ProductService {
@@ -14,6 +15,7 @@ public class ProductService {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	@Retry(name="product-service")
 	@CircuitBreaker(name = "product-service", fallbackMethod = "fallbackMethodForGetProductById")
 	public Product getProductById(int id) {
 
