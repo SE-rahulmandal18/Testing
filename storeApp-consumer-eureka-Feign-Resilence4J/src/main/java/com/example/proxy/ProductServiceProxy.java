@@ -21,7 +21,7 @@ public interface ProductServiceProxy {
 	@GetMapping(value = "/products", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public List<Product> getAllProducts();
 	
-	
+	@Retry(name="product-service")
     @CircuitBreaker(name= "product-service", fallbackMethod = "fallbackMethodGetProductById")
 	@GetMapping(value = "/products/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Product getProductById(@PathVariable("id")Integer id);
