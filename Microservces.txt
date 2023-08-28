@@ -96,7 +96,7 @@ Rest temp wants 1 IP address but we getting 3
 docker run -p 9411:9411 openzipkin/zipkin
 
 
-
+docker run -p 9090:9090 -v C:\prometheus.yml prom/prometheus
 
 
 
