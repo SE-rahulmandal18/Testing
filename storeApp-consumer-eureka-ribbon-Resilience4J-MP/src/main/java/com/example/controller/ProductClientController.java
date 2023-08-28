@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.entity.Product;
 import com.example.service.ProductService;
 
+import io.micrometer.core.annotation.Timed;
+
 @RestController
 @Scope("request")
 public class ProductClientController {
@@ -16,6 +18,7 @@ public class ProductClientController {
 	@Autowired
 	private ProductService productService;
  	
+	@Timed(value = "getProductById.time", description = "Taken time to return product")
 	@GetMapping("/get-products/{id}")
  	public Product getProductById(@PathVariable int id) {
 		
