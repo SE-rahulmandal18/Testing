@@ -19,7 +19,7 @@ public class ProductService {
 	@CircuitBreaker(name = "product-service", fallbackMethod = "fallbackMethodForGetProductById")
 	public Product getProductById(int id) {
 
-		Product product = restTemplate.getForObject("htttp://product-service/products/" + id, Product.class);
+		Product product = restTemplate.getForObject("http://product-service/products/" + id, Product.class);
 
 		return product;
 	}
