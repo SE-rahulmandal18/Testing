@@ -1,13 +1,15 @@
-package com.example.service;
+package com.example.producer;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import com.example.entity.Employee;
 
-public class EmployeeRegistrationService {
-
+@Service
+public class EmployeeRegistrationProducer {
+	
 	@Value("${rabbitmq.exchange.name}")
 	private String exchange;
 	

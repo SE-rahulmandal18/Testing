@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties
 public class Employee implements Serializable{
 	
-	private static final long serialVersionUID = -598988534;
+	private static final long serialVersionUID = 101;
 	private String empId;
 	private String empName;
 	
