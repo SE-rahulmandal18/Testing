@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import reactor.core.publisher.Mono;
 
 @Component
-public class LoggingGatewayFilterFactory extends AbstractGatewayFilterFactory<LoggingGatewayFilterFactory.Config>{
+public class LoggingGatewayFilterFactory extends AbstractGatewayFilterFactory<LoggingGatewayFilterFactory.Config> {
 
 	private final Logger logger = LoggerFactory.getLogger(LoggingGatewayFilterFactory.class);
 	
@@ -22,34 +22,37 @@ public class LoggingGatewayFilterFactory extends AbstractGatewayFilterFactory<Lo
 	
 	@Override
 	public GatewayFilter apply(Config config) {
+		
 		return (exchange, chain) -> {
 			
-			//Pre-processing
-			if(config.isPreLogger()) { 
-				logger.info("Pre GatewayFiler Logging: " + config.getBaseMessage());
-		}
-		
-		return chain.filter(exchange).then(Mono.fromRunnable(() -> {
-			//Post-processing
-			if(config.isPostLogger()) {
-				logger.info("Post GatewayFiler Logging: " + config.getBaseMessage());
+			//pre-processing
+			if(config.preLogger) {
+				logger.info("Pre GatewayFiler Logging: " + config.baseMessage);
+			}
+			
+			return chain.filter(exchange).then(Mono.fromRunnable(() -> {
+				//Post-processing
+				if(config.postLogger) {
+					logger.info("Post GatewayFiler Logging: " + config.baseMessage);
 				}
-		}));
-	};
-   
- 
-}
+			}));
+		};
+	   
+	}
 	
 	@Data
 	@NoArgsConstructor
 	@AllArgsConstructor
-	private static class Config {
+	public static class Config {
 		
 		//Specify your configuration
 		private String baseMessage;
 		private boolean preLogger;
 		private boolean postLogger;
-		
 	}
-	
+
+
 }
+	
+	
+
