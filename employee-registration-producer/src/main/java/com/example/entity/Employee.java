@@ -1,7 +1,13 @@
 package com.example.entity;
 
-public class Employee  {
+import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties
+public class Employee implements Serializable{
+	
+	private static final long serialVersionUID = -598988534;
 	private String empId;
 	private String empName;
 	
