@@ -7,11 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Processor;
-import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.integration.annotation.Transformer;
 
 @SpringBootApplication
-@EnableBinding(Source.class)
+@EnableBinding(Processor.class)
 public class SpringCloudDataFlowApplication {
 
 	@Transformer(inputChannel = Processor.INPUT, outputChannel = Processor.OUTPUT)
