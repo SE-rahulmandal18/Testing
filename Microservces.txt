@@ -91,7 +91,7 @@ Rest temp wants 1 IP address but we getting 3
 
 
 
-
+-------------------------------------------------------------------------------------------------------------------------------------
 
 docker run -p 9411:9411 openzipkin/zipkin
 
@@ -102,7 +102,7 @@ docker run -p 9090:9090 -v C:\prometheus.yml prom/prometheus
 http://repo.spring.io/milestone/org/springframework/cloud/spring-cloud-dataflow-shell/1.3.0.M1/
 
 
-
+--------------------------------------------------------------------------------------------------------------------------------------
 
 spring.datasource.url=jdbc:h2:mem:storeappdb
 spring.datasource.driverClassName=org.h2.Driver
@@ -139,7 +139,7 @@ spring.sql.init.data=classpath:db/data-h2.sql
 management.endpoint.env.show-values=ALWAYS
 
 
-
+---------------------------------------------------------------------------------------------------------------------------------------
 
 
 		bookRepository.save(new Book(null '.NET IL Assembler', 'PublisherE', '978-1-4302-6761-4', 492, 2014),
@@ -160,12 +160,141 @@ management.endpoint.env.show-values=ALWAYS
 				(20, '25 Recipes for Getting Started with R', 'PublisherT', '978-1-4493-0323-5', 50, 2011);
 		
 
-
+-----------------------------------------------------------------------------------------------------------------------------------------
 git commands
  1)Delete a folder from github 
         git rm -r foldername
         git commit -m "done"
         git push origin
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+DAY 2-----------------------------------------------------------------
+
+Actuator dependency for enabling 13 endpoints(application.properties) eg:actuator  actuator/healt, actuator/env...
+
+profile -> default:
+application.properties
+
+profile -> dev:
+application-dev.properties1
+
+profile -> prod:
+application-prod.properties
+
+spring.profiles.active=dev
+spring.profiles.active=prod
+
+Codebase(jar)-  creted a JAR , application is in running state
+so if requriments comes and DBA says that u should change max-pool-size 10 to 30 for better performance
+
+so rather than changing the codebase everytime 
+1) Configuration Service -Supporting capabilites(spring cloud config)
+go for centralised repository github (versioned)
+
+
+Spring cloud config:
+- Spring cloud config server
+- Spring cloud config client (microservice- for eg -> storeapp)
+
+1) client(storespp) will intertact with config server through the URL we passed to Storeapp in properties file
+    i.e it binds to the Config server through the URL of config server
+
+
+--------------------------------------------------------------------------------------------------------------
+
+Config server-
+
+ 1) starter -> config server
+ 2) annotate -> @EnbaleConfigServer to make Project as Config server 
+ 3) server.port = 8888
+
+ http://localhost:8888/book-service/prod/main (to check the config server is getting the property file or not)
+
+
+---------------------------------------------------------------------------------------------
+
+DAY 3
+
+Cloud - AutoScaling
+
+
+Dyanmic IP Address
+-Services are  running
+
+Dynamic ports
+-changing ports
+
+- Due to frequently of changing dynamic IP/ports  we can't locate the restService hence service to service calls will fail(we dont know where the req services is available)
+
+------------------------------------------------------------------------------------------------------------
+
+So to Overcome these problems there is pattern called
+ -Service registrey
+
+Impenetation of the patter in Netfix Eureka Service Registry
+
+
+DAY 4-----------------------------------------------------------------------------------------------------------------------------------
+http://product-service/products
+http://product-service/products/1
+
+
+@EnableEurekaClient or @EnableDiscoveryClient -> fro self registration & deregistration
+
+
+--------------------------------------------------------------------------
+
+
+In Spring rest to do service to service call: which API we use ?
+   -RestTemplate (is the HTTP Cilent implementation)
+   -RestTemplate will make call to other service / make a sysnchrnous call
+   
+   -RestTemplate Requires IP / PORT  
+
+but REST TEMPLATE req only 1 IP/PORT but we r geetinh 3 in the metadata
+
+To resolve this problm there is a patter called Client Side Discovery
+
+------------------------------------------------------------------------------
+
+Client Side Load Balacing: (Ribbon)
+
+Client side discovery pattern is saying (implementation Netflix Ribbon)
+  - so Make HTTP client Registry Aware HTTP client so whn now we give the IP/PORT 
+   
+  -Adding an extra capability to the HTTP Client so now it will look up into the registry , gte the
+   meta data 
+  - now it will use alogorithm call ROUND ROBBIN ALGO 
+  - using this ALGO out of 3 it will pickup 1 IP/PORT
+  -thn it will hit to port
+
+service to service call
+ -REST TEMPLATE (HTTP CLIENT)
+
+Spirng Cloud Ribbon:
+ -@LoadBalanced (whre we create obj of restTemplate on the top of it thy add and extra capabilty to it and hence no more http client but Registry Aware HTTP client )
+
+ 
+--------------------------------------------------------------------------------------------------
+
+DAY 5 - 
+
+to reduce the boiler plate code of microservices using restTemplate in ProductClientController class of Ribbon 
+Netfilx comes-up with a concept called "OpenFiegn"->It provides  high level of abstraction for rest based service call .Using feign we write declrative Rest servies interface and the interface impl will be auto provided by spring at run time.
+ 
+Client side load balancing with Feign
+
+-------------------------------------------------------------------------------------------
+
+
+
+
+
+
 
 
 
