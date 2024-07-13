@@ -194,6 +194,20 @@ So now how many times it will get executed ??
 
 Lecture 4:
 
+Web Drivers :
+
+It is the interface used for testing in Selenium. which has various class which implements it like FirefoxDriver, Chrome Driver etc.
+
+Selenium WebDriver makes direct call to the browser using each
+browser native support automation.
+
+Drivers are exe file developed by selenium so that the web drivers
+could speaks to the browser's inbuilt capability of the automations.
+
+=============================================================================
+
+
+Different drivers has different exe file.
 // open the particular url
   d.get("http://demowebshop.tricentis.com/");
 
