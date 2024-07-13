@@ -1,0 +1,312 @@
+Selenium :
+
+What type of tool it is ?
+
+Testing tools
+Functional automation tool - Selenium,YFT,TOSCA...
+           manually
+           tool
+Non - Functional tool - Jmeter, Load Runner, Neo Load
+      Performance 
+
+Test Management tool - JIRA,ALM
+
+BDD tool - Cucumber
+
+======================================================
+
+Selenium 
+        suit of software
+        open source
+        test only the web applications
+
+
+Selenium 3
+         IDE
+         WebDriver
+         Grid
+=======================================================
+
+IDE 
+      Firefox-addson for Selenium IDE
+      Record and playback
+      without programming need
+
+
+========================================================
+
+RC : Remorte Control
+
+Script(java)webdriver(2.0) - means the program to automate in chrome (eg : open google page)
+             
+
+
+============================================================================
+
+WebDriver :
+
+webdriver library were modified and they can now directly communicate to browser
+Script(java)webdriver(3.0)---> chrome
+
+====================================================================
+
+Grid : used for parallel excution in distributed enviroment
+
+Test Login Functionality
+
+20TCs - IE,chrome, Firebox - windows
+
+20TCs - IE,chrome, Firebox - mac
+
+20TCs - IE,chrome, Firebox - linux
+
+=========================================================
+
+Assertion - to do the testing
+
+verfiy - fail - consecutive steps are executed - steps are independent
+assert - passes - consecutive setps are not executed - steps are independent
+
+=========================================================
+
+Accessors command :
+
+
+
+
+========================================================
+Lecture 3:
+
+Need of the TestNG framework - reports, testing
+
+Maven Project - build tool in java
+
+---------------------------------------------------
+
+Testing can be done in Assert class in TestNG Library
+
+Assert.assertEquals(expected result, Actual Result) -  same then result pass
+
+Assert.assertNotNull()
+Assert.assertfail()
+
+----------------------------
+
+If multiple @Test - by default aphabetically with the name of Methods
+
+@Test(priority=2) - it will execute the method in priority straing from 0,1,2,3..
+
+
+==========================================================
+
+@Test(enabled=false)- the test case doesn't get executed
+
+=========================================================
+
+Dependent Test : if one method is dependent on another method 
+
+For example: We can do paymemnt on after the loginTest is successful 
+
+so paymentTest is dependent on Login
+
+@Test(priority=2, dependsonMethod = {"loginTest"})
+
+
+========================================================
+
+@BeforeTest - gets executed before any of the @Test - setup related things
+@AfterTest - gets executed after all  the @Test - closer related things like browser closer, database closer etc.
+
+
+@BeforeTest - gets executed before each of the @Test 
+@AfterTest - gets executed after each the @Test - 
+==========================================================
+
+Grouping of Test :- 
+
+Release5
+Demo02(BeforeTestAndAfterTestDemo) - loginTest,regTest,paymentTest
+Demo03(BeforeMethodAndAfterMethodDemo) - searchTest,selectProduct
+
+Release5 - systemTesting
+Release5 - smokeTesting - loginTest,searchTest
+
+Like If I want to perform grouping of Test for both the demos  in combined(if i want the o/p to be
+loginTest,searchTest ) 
+we use following code : in both the loginTest,searchTest methods
+       @Test(priority=2, groups={"smokeTesting"}
+
+1) mark the group in the @Test
+
+2) suit file - execute the groups smokeTesting
+
+<groups>
+<run>
+<include name="smokeTesting"/>
+</run>
+</groups>
+
+========================================================
+
+@Parameter({ "browserName", URL })
+
+1) Give the @Parameter to your testing class
+2) suit.xml
+   <parameter name="browserName" value="Firefox"/>
+    <parameter name="URL" value="https://google.com"/>
+
+========================================================
+
+@DataProvider - data driven testing in Selenium
+
+Eg: Same Test you want to do with multiple data then knows as data driven
+   
+    Login for 5 different users, Payment to be done in 5 different cards
+
+
+public void loginTest(String u, String p) {
+	  // this will get executed multiple times
+	  System.out.println("Username"+ u);
+	  System.out.println("Password"+ p);
+  }
+
+@DataProvider
+  public Object[][] dp() {
+    return new Object[][] {
+      new Object[] { 1, "a" },
+      new Object[] { 2, "b" },
+    };
+  }
+
+ this will get executed multiple times because the reason is attribute dataProver
+
+Whenever TestNG sees this attribute @dataProvider , it understands that it has to execute
+multiple times.
+
+So now how many times it will get executed ??
+
+-It will get executed the number of the times the data is returned by "dp"
+
+"dp" is nothing but the name of the method provideing the data
+
+
+=======================================================
+
+Lecture 4:
+
+// open the particular url
+  d.get("http://demowebshop.tricentis.com/");
+
+//it will maximize the browser
+d.manager().window().maximize();
+
+========================================================
+
+d.get("")-----------> selenium will wait till the entire page is loaded
+d.naviagte().to("https://www.google.com/") - selenium will not wait till the entire page is loaded
+
+=========================================================
+
+// back button
+d.naviagte().back
+
+//forward button
+d.navigate().forword();
+
+//refresh button
+d.naviagte().refresh();
+
+===========================================================
+
+Webelements - components on the page are called as webelements
+Locators - unique features through which the webelements can be indentified
+
+driver.findElement() - returns you the webelement
+driver.findElement(By.------("") )-----> returns  you the webelement
+By.id("")----------> return the locators
+
+
+Locators:
+linkText      - driver.findElemet(By.linkText("nameofthelink"))
+            eg- driver.findElemet(By.linkText("Log in"))
+
+========================
+
+partial Text'    - driver.findElemet(By.linkText("nameofthelink"))
+               eg- driver.findElemet(By.linkText("Log in"))
+
+link is dynamically changing - Inbox(mail dynamically changed)
+
+=========================
+
+
+id
+name
+classname
+
+<tagname id="" name="" classname="" />
+<input id="a" name="b" classname="c">
+
+driver.findelement(By.id("a"))
+driver.findElement(By.name("b"))
+driver.findElement(By.classname("c"))
+
+================================
+
+xpath : is the language used when locationg XML nodes.
+
+<html>
+<a>
+<input>
+<a>
+<input>
+<input>
+</html>
+
+html/a/a/input-------------->absolute xpath
+html/a/a/input/input-------->
+
+
+absolute xpath =/html/body/div[4]/div[1]div[4]......./form/div[5]/input
+
+<input class="button-1 login-button" type="submit" value="Log in>
+relative xpath =//tagname[@attribute='value']
+//input[@value='Log in']
+
+in case if single attribute is  not unique then you can put another
+attribute and so on..
+//tagname[@attribute='value'][@attribute='value']
+
+driver.findElement(By.xpath("//input{@value='Log in'")).click();
+
+
+===============================================================
+
+
+css : tagname[attribute=''''][attribute='']
+driver.findElement(By.cssSelector("input[value='log in']")).click();
+
+=================================================================
+
+1 ---------->Unsuccessful login
+2 WebElement logout = driver.findElement(By.linkText("Log out"));
+logout will not be set to null
+Exception - NO suuch element exception
+3 Asser.assertNotNull(logout);
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
